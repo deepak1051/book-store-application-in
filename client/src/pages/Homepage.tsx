@@ -1,16 +1,14 @@
 import { toast } from 'react-toastify';
 
-import useUsers from '../hooks/useUsers';
-import { api } from '../api';
 import { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
+import { api } from '../api';
 
 interface Book {
   _id: string;
   title: string;
   image: string;
+  user: any;
 }
 
 const Homepage = () => {
@@ -33,8 +31,6 @@ const Homepage = () => {
 
     fetchData();
   }, []);
-
-  const { id } = jwtDecode(localStorage.getItem('token')!);
 
   const handleDelete = async (id: string) => {
     try {
