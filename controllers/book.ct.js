@@ -31,6 +31,7 @@ export const deleteBook = async (req, res) => {
     }
 
     await Book.findByIdAndDelete(req.params.id);
+    return res.status(200).json({ message: 'Book deleted successfully'});
   } catch (error) {
     res.status(500).json({ message: error.message || 'Internal server error' });
   }
