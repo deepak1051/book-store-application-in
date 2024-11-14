@@ -31,6 +31,7 @@ export const signup = async (req, res) => {
 
     res.status(201).json({ token });
   } catch (error) {
+    console.log('Error',error)
     return res.status(500).json({ message: 'Something went wrong' });
   }
 };
